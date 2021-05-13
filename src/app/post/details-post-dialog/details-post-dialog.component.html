@@ -1,0 +1,71 @@
+<div class="content-wrapper">
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0 text-dark" style="padding-top: 60px;">Details Post</h1>
+        </div>
+        <div class="col-sm-6">
+        </div>
+      </div>
+    </div>
+  </div>
+  <section>
+    <!-- <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <p>{{posts.name}}</p>
+          <p>{{posts.price}}</p>
+          <img src="{{ posts.img }}">
+          <button type="button" class="btn btn-success"><i class="fas fa-edit"></i></button>
+          <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
+        </div>
+      </div>
+    </div> -->
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="blogs mb-30">
+            <div class="card">
+              <div class="card-image">
+                <img src="{{posts.img}}" alt="Image">
+              </div>
+
+              <div class="card-content w100dt">
+                <p>
+                  <a href="#" class="tag left w100dt l-blue mb-30">{{posts.price}}</a>
+                </p>
+                <a href="#" class="card-title mb-30">
+                  {{posts.name}}
+                </a>
+                <p class="mb-30">
+                  <!-- {{posts.shortcontent}} -->
+                  shortcontent
+                </p>
+                <ul class="post-mate-time left mb-30">
+                  <li>
+                    <p class="hero left">
+                      By - <a href="#" class="l-blue">
+                        <!-- {{posts.author}} -->
+                        author
+                      </a>
+                    </p>
+                  </li>
+                  <li>
+                    <i class="icofont icofont-ui-calendar"></i>
+                    <!-- {{posts.createdated}} -->
+                    createdated
+                  </li>
+                </ul>
+                <p class="w100dt mb-50">
+                  <!-- {{posts.maincontent}} -->
+                  {{posts.name}}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
