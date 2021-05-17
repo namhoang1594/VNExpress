@@ -19,6 +19,12 @@ namespace VnExpress.Api.Controllers
         {
             _categoryService = categoryService;
         }
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            var categories = await _categoryService.GetAll();
+            return Ok(categories);
+        }
         [HttpGet("{categoryId}")]
 
         public async Task<IActionResult> GetById(int categoryId)

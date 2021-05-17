@@ -8,6 +8,7 @@ namespace VnExpress.Application.Categories
 {
     public interface ICategoryService
     {
+        Task<List<CategoryVm>> GetAll();
         Task<int> Create(CategoryCreateRequest request);
 
         Task<int> Update(CategoryUpdateRequest request);

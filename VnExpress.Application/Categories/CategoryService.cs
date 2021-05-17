@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VnExpress.Data.EF;
@@ -39,6 +41,18 @@ namespace VnExpress.Application.Categories
             if (category == null) throw new Exception($"Cannot find a category: {categoryId}");
             _context.Categories.Remove(category);
             return await _context.SaveChangesAsync();
+        }
+
+        public async Task<List<CategoryVm>> GetAll()
+        {
+            var categories = await _context.Categories.Select(category => new CategoryVm()
+            {
+                CategoryId = category.CategoryId,
+                CategoryName = category.CategoryName,
+                Description = category.Description
+            }).ToListAsync();
+            return categories;
+
         }
 
         public async Task<CategoryVm> GetById(int categoryId)

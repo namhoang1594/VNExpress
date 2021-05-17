@@ -19,7 +19,12 @@ namespace VnExpress.Api.Controllers
         {
             _postService = postService;
         }
-   
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            var posts = await _postService.GetAll();
+            return Ok(posts);
+        }
         [HttpGet("{postId}")]
 
         public async Task<IActionResult> GetById(int postId)

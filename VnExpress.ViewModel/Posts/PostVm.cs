@@ -15,5 +15,10 @@ namespace VnExpress.ViewModel.Posts
         public string Images { get; set; }
         public int CategoryId { get; set; }
         public List<string> Categories { get; set; } = new List<string>();
+
+        public object Select(Func<object, PostVm> p)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

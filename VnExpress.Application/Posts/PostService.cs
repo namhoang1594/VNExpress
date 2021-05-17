@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VnExpress.Data.EF;
@@ -14,9 +16,23 @@ namespace VnExpress.Application.Posts
         public PostService(VnExpressDbContext context)
         {
             _context = context;
-            
+
         }
-       
+        public async Task<List<PostVm>> GetAll()
+        {
+            var posts = await _context.Posts.Select(post => new PostVm()
+            {
+                Id = post.Id,
+                Title = post.Title,
+                ShortContent = post.ShortContent,
+                MainContent = post.MainContent,
+                Author = post.Author,
+                Images = post.Images,
+                CategoryId = post.CategoryId
+            }).ToListAsync();
+            return posts;
+
+        }
         public async Task<PostVm> GetById(int postId)
         {
             var post = await _context.Posts.FindAsync(postId);
@@ -39,7 +55,7 @@ namespace VnExpress.Application.Posts
             {
 
                 var post = new Post()
-                { 
+                {
                     Title = request.Title,
                     ShortContent = request.ShortContent,
                     MainContent = request.MainContent,
@@ -48,7 +64,7 @@ namespace VnExpress.Application.Posts
                     CategoryId = request.CategoryId
 
                 };
-                
+
                 _context.Posts.Add(post);
                 await _context.SaveChangesAsync();
                 return post.Id;
@@ -67,7 +83,7 @@ namespace VnExpress.Application.Posts
         public async Task<int> Update(PostUpdateRequest request)
         {
             var post = await _context.Posts.FindAsync(request.Id);
-            if (post == null ) throw new Exception($"Cannot find a post with id: {request.Id}");
+            if (post == null) throw new Exception($"Cannot find a post with id: {request.Id}");
             post.Title = request.Title;
             post.ShortContent = request.ShortContent;
             post.MainContent = request.MainContent;
@@ -78,6 +94,6 @@ namespace VnExpress.Application.Posts
 
         }
 
-        
+      
     }
 }

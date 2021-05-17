@@ -8,10 +8,13 @@ namespace VnExpress.Application.Posts
 {
     public interface IPostService
     {
+        Task<List<PostVm>> GetAll();
         Task<PostVm> GetById(int postId);
         Task<int> Create(PostCreateRequest request);
         Task<int> Delete(int postId);
         Task<int> Update(PostUpdateRequest request);
         
+
+
     }
 }
