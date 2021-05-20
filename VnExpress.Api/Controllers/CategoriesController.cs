@@ -34,10 +34,10 @@ namespace VnExpress.Api.Controllers
                 return BadRequest("Cannot find category");
             return Ok(category);
         }
+
         [HttpPost]
-        [Consumes("multipart/form-data")]
-        
-        public async Task<IActionResult> Create([FromForm] CategoryCreateRequest request)
+        [Consumes("application/json")]
+        public async Task<IActionResult> Create( CategoryCreateRequest request)
         {
             if (!ModelState.IsValid)
             {
@@ -55,9 +55,9 @@ namespace VnExpress.Api.Controllers
 
 
         [HttpPut("{categoryId}")]
-        [Consumes("multipart/form-data")]
+        [Consumes("application/json")]
         
-        public async Task<IActionResult> Update([FromRoute] int categoryId, [FromForm] CategoryUpdateRequest request)
+        public async Task<IActionResult> Update(int categoryId, CategoryUpdateRequest request)
         {
             if (!ModelState.IsValid)
             {

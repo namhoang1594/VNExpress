@@ -20,14 +20,16 @@ namespace VnExpress.Application.Posts
         }
         public async Task<List<PostVm>> GetAll()
         {
-            var posts = await _context.Posts.Select(post => new PostVm()
+            var posts = await _context.Posts.OrderByDescending(post => post.Id).Select(post => new PostVm()
             {
                 Id = post.Id,
                 Title = post.Title,
+                Author = post.Author,
+                DateCreated = post.DateCreated,
                 ShortContent = post.ShortContent,
                 MainContent = post.MainContent,
-                Author = post.Author,
                 Images = post.Images,
+                CategoryName = post.CategoryName,
                 CategoryId = post.CategoryId
             }).ToListAsync();
             return posts;
@@ -40,10 +42,12 @@ namespace VnExpress.Application.Posts
             {
                 Id = post.Id,
                 Title = post.Title,
+                Author = post.Author,
+                DateCreated = post.DateCreated,
                 ShortContent = post.ShortContent,
                 MainContent = post.MainContent,
-                Author = post.Author,
                 Images = post.Images,
+                CategoryName = post.CategoryName,
                 CategoryId = post.CategoryId
 
             };
@@ -57,10 +61,11 @@ namespace VnExpress.Application.Posts
                 var post = new Post()
                 {
                     Title = request.Title,
+                    Author = request.Author,
                     ShortContent = request.ShortContent,
                     MainContent = request.MainContent,
-                    Author = request.Author,
                     Images = request.Images,
+                    CategoryName = request.CategoryName,
                     CategoryId = request.CategoryId
 
                 };
@@ -85,10 +90,11 @@ namespace VnExpress.Application.Posts
             var post = await _context.Posts.FindAsync(request.Id);
             if (post == null) throw new Exception($"Cannot find a post with id: {request.Id}");
             post.Title = request.Title;
+            post.Author = request.Author;
             post.ShortContent = request.ShortContent;
             post.MainContent = request.MainContent;
-            post.Author = request.Author;
             post.Images = request.Images;
+            post.CategoryName = request.CategoryName;
             post.CategoryId = request.CategoryId;
             return await _context.SaveChangesAsync();
 

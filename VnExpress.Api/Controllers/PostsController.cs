@@ -11,6 +11,7 @@ namespace VnExpress.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [AllowAnonymous]
     public class PostsController : Controller
     {
         private readonly IPostService _postService;
@@ -35,9 +36,9 @@ namespace VnExpress.Api.Controllers
             return Ok(post);
         }
         [HttpPost]
-        [Consumes("multipart/form-data")]
+        [Consumes("application/json")]
         
-        public async Task<IActionResult> Create([FromForm] PostCreateRequest request)
+        public async Task<IActionResult> Create(PostCreateRequest request)
         {
             if (!ModelState.IsValid)
             {
@@ -55,9 +56,9 @@ namespace VnExpress.Api.Controllers
         
 
         [HttpPut("{postId}")]
-        [Consumes("multipart/form-data")]
+        [Consumes("application/json")]
         
-        public async Task<IActionResult> Update([FromRoute] int postId, [FromForm] PostUpdateRequest request)
+        public async Task<IActionResult> Update(int postId, PostUpdateRequest request)
         {
             if (!ModelState.IsValid)
             {

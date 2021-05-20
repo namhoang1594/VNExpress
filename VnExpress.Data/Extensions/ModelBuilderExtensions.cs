@@ -37,22 +37,24 @@ namespace VnExpress.Data.Extensions
                {
                    Id = 1,
                    Title = "Tình hình kinh tế thế giới",
-                   ShortContent = "Tình hình kinh tế châu á",
-                   MainContent = "Tình hình kinh tế EU",
                    Author = "Hoàng Nam",
                    DateCreated = DateTime.Now.Date,
+                   ShortContent = "Tình hình kinh tế châu á",
+                   MainContent = "Tình hình kinh tế EU",
                    Images = "Ảnh",
-                   CategoryId = 3,
+                   CategoryName = "Văn hóa",
+                   CategoryId = 1,
 
                }, new Post()
                {
                    Id = 2,
                    Title = "Tình hình xã hội thế giới",
-                   ShortContent = "Tình hình xã hội châu á",
-                   MainContent = "Tình hình xã hội EU",
                    Author = "Tuấn Anh",
                    DateCreated = DateTime.Now.Date,
+                   ShortContent = "Tình hình xã hội châu á",
+                   MainContent = "Tình hình xã hội EU",
                    Images = "Ảnh",
+                   CategoryName = "Xã hội",
                    CategoryId = 2,
 
                },
@@ -60,11 +62,12 @@ namespace VnExpress.Data.Extensions
                {
                    Id = 3,
                    Title = "Tình hình văn hóa thế giới",
-                   ShortContent = "Tình hình văn hóa châu á",
-                   MainContent = "Tình hình văn hóa EU",
                    Author = "Văn Trung",
                    DateCreated = DateTime.Now.Date,
+                   ShortContent = "Tình hình văn hóa châu á",
+                   MainContent = "Tình hình văn hóa EU",
                    Images = "Ảnh",
+                   CategoryName = "Kinh tế",
                    CategoryId = 3,
 
                });
