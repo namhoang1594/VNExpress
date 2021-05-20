@@ -13,7 +13,10 @@ namespace VnExpress.Application.Posts
         Task<int> Create(PostCreateRequest request);
         Task<int> Delete(int postId);
         Task<int> Update(PostUpdateRequest request);
-        
+        Task<List<PostVm>> GetFeaturedPosts();
+        Task<List<PostVm>> GetLatestPosts();
+        Task<List<PostVm>> GetNewPosts();
+
 
 
     }

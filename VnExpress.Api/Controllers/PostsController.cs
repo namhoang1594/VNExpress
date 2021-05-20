@@ -9,9 +9,8 @@ using VnExpress.ViewModel.Posts;
 
 namespace VnExpress.Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
-    [AllowAnonymous]
     public class PostsController : Controller
     {
         private readonly IPostService _postService;
@@ -80,6 +79,25 @@ namespace VnExpress.Api.Controllers
                 return BadRequest();
             return Ok();
         }
+        [HttpGet]
+        public async Task<IActionResult> GetFeaturedPosts()
+        {
+            var posts = await _postService.GetFeaturedPosts();
+            return Ok(posts);
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetLatestPosts()
+        {
+            var posts = await _postService.GetLatestPosts();
+            return Ok(posts);
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetNewPosts()
+        {
+            var posts = await _postService.GetNewPosts();
+            return Ok(posts);
+        }
+
 
     }
 }

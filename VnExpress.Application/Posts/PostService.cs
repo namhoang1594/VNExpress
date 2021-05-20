@@ -100,6 +100,36 @@ namespace VnExpress.Application.Posts
 
         }
 
-      
+        public async Task<List<PostVm>> GetFeaturedPosts()
+        {
+            var posts = await _context.Posts.OrderByDescending(post => post.Id).Take(1).Select(post => new PostVm()
+            {
+                Title = post.Title,
+                ShortContent = post.ShortContent,
+                Images = post.Images,
+            }).ToListAsync();
+            return posts;
+        }
+
+        public async Task<List<PostVm>> GetLatestPosts()
+        {
+            var posts = await _context.Posts.OrderByDescending(post => post.Id).Take(3).Select(post => new PostVm()
+            {
+                Title = post.Title,
+                ShortContent = post.ShortContent,
+            }).ToListAsync();
+            return posts;
+        }
+
+        public async Task<List<PostVm>> GetNewPosts()
+        {
+            var posts = await _context.Posts.OrderByDescending(post => post.Id).Take(4).Select(post => new PostVm()
+            {
+                Title = post.Title,
+                ShortContent = post.ShortContent,
+                Images = post.Images,
+            }).ToListAsync();
+            return posts;
+        }
     }
 }

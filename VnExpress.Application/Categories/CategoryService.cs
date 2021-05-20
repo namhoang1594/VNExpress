@@ -45,7 +45,7 @@ namespace VnExpress.Application.Categories
 
         public async Task<List<CategoryVm>> GetAll()
         {
-            var categories = await _context.Categories.Select(category => new CategoryVm()
+            var categories = await _context.Categories.OrderByDescending(category => category.CategoryId).Select(category => new CategoryVm()
             {
                 CategoryId = category.CategoryId,
                 CategoryName = category.CategoryName,
