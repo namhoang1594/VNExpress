@@ -13,7 +13,6 @@ namespace VnExpress.Data.Entities
         public string Author { get; set; }
         public DateTime DateCreated { get; set; }
         public string Images { get; set; }
-        public string CategoryName { get; set; }
         public int CategoryId { get; set; }
         public Category Category { get; set; }
     }

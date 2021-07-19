@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using VnExpress.Application.Categories;
 using VnExpress.Application.Posts;
+using VnExpress.Application.Users;
 using VnExpress.Data.EF;
 
 namespace VnExpress.Api
@@ -35,6 +36,7 @@ namespace VnExpress.Api
             services.AddSwaggerGen();
             services.AddTransient<IPostService, PostService>();
             services.AddTransient<ICategoryService, CategoryService>();
+            services.AddTransient<IUserService, UserService>();
             services.AddCors(
                 options =>
                 {

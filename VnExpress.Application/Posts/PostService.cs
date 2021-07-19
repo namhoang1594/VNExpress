@@ -29,7 +29,6 @@ namespace VnExpress.Application.Posts
                 ShortContent = post.ShortContent,
                 MainContent = post.MainContent,
                 Images = post.Images,
-                CategoryName = post.CategoryName,
                 CategoryId = post.CategoryId
             }).ToListAsync();
             return posts;
@@ -47,7 +46,6 @@ namespace VnExpress.Application.Posts
                 ShortContent = post.ShortContent,
                 MainContent = post.MainContent,
                 Images = post.Images,
-                CategoryName = post.CategoryName,
                 CategoryId = post.CategoryId
 
             };
@@ -65,7 +63,6 @@ namespace VnExpress.Application.Posts
                     ShortContent = request.ShortContent,
                     MainContent = request.MainContent,
                     Images = request.Images,
-                    CategoryName = request.CategoryName,
                     CategoryId = request.CategoryId
 
                 };
@@ -94,7 +91,6 @@ namespace VnExpress.Application.Posts
             post.ShortContent = request.ShortContent;
             post.MainContent = request.MainContent;
             post.Images = request.Images;
-            post.CategoryName = request.CategoryName;
             post.CategoryId = request.CategoryId;
             return await _context.SaveChangesAsync();
 
@@ -117,6 +113,7 @@ namespace VnExpress.Application.Posts
             {
                 Title = post.Title,
                 ShortContent = post.ShortContent,
+                Images = post.Images
             }).ToListAsync();
             return posts;
         }

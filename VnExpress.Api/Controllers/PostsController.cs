@@ -19,7 +19,7 @@ namespace VnExpress.Api.Controllers
         {
             _postService = postService;
         }
-        [HttpGet]
+        [HttpGet("/[action]")]
         public async Task<IActionResult> GetAll()
         {
             var posts = await _postService.GetAll();
@@ -79,19 +79,19 @@ namespace VnExpress.Api.Controllers
                 return BadRequest();
             return Ok();
         }
-        [HttpGet]
+        [HttpGet("/[action]")]
         public async Task<IActionResult> GetFeaturedPosts()
         {
             var posts = await _postService.GetFeaturedPosts();
             return Ok(posts);
         }
-        [HttpGet]
+        [HttpGet("/[action]")]
         public async Task<IActionResult> GetLatestPosts()
         {
             var posts = await _postService.GetLatestPosts();
             return Ok(posts);
         }
-        [HttpGet]
+        [HttpGet("/[action]")]
         public async Task<IActionResult> GetNewPosts()
         {
             var posts = await _postService.GetNewPosts();

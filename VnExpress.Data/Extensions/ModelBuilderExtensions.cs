@@ -42,7 +42,6 @@ namespace VnExpress.Data.Extensions
                    ShortContent = "Tình hình kinh tế châu á",
                    MainContent = "Tình hình kinh tế EU",
                    Images = "Ảnh",
-                   CategoryName = "Văn hóa",
                    CategoryId = 1,
 
                }, new Post()
@@ -54,7 +53,6 @@ namespace VnExpress.Data.Extensions
                    ShortContent = "Tình hình xã hội châu á",
                    MainContent = "Tình hình xã hội EU",
                    Images = "Ảnh",
-                   CategoryName = "Xã hội",
                    CategoryId = 2,
 
                },
@@ -67,9 +65,29 @@ namespace VnExpress.Data.Extensions
                    ShortContent = "Tình hình văn hóa châu á",
                    MainContent = "Tình hình văn hóa EU",
                    Images = "Ảnh",
-                   CategoryName = "Kinh tế",
                    CategoryId = 3,
 
+               });
+            modelBuilder.Entity<User>().HasData(
+               new User()
+               {
+                  IdUser = 1,
+                  FirstName = "Tuấn",
+                  LastName = "Anh",
+                  Email = "anh453138@gmail.com",
+                  UserName = "tuananh",
+                  Password = "123456",
+                  ConfirmPassword = "123456",
+
+               }, new User()
+               {
+                   IdUser = 2,
+                   FirstName = "Ad",
+                   LastName = "min",
+                   Email = "admin453138@gmail.com",
+                   UserName = "admin",
+                   Password = "123456",
+                   ConfirmPassword = "123456",
                });
         }
     }

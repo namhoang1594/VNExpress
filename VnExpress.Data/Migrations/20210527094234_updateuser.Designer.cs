@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VnExpress.Data.EF;
 
 namespace VnExpress.Data.Migrations
 {
     [DbContext(typeof(VnExpressDbContext))]
-    partial class VnExpressDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210527094234_updateuser")]
+    partial class updateuser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -74,6 +76,9 @@ namespace VnExpress.Data.Migrations
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
+                    b.Property<string>("CategoryName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime2");
 
@@ -91,7 +96,8 @@ namespace VnExpress.Data.Migrations
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
 
@@ -105,7 +111,8 @@ namespace VnExpress.Data.Migrations
                             Id = 1,
                             Author = "Hoàng Nam",
                             CategoryId = 1,
-                            DateCreated = new DateTime(2021, 6, 1, 0, 0, 0, 0, DateTimeKind.Local),
+                            CategoryName = "Văn hóa",
+                            DateCreated = new DateTime(2021, 5, 27, 0, 0, 0, 0, DateTimeKind.Local),
                             Images = "Ảnh",
                             MainContent = "Tình hình kinh tế EU",
                             ShortContent = "Tình hình kinh tế châu á",
@@ -116,7 +123,8 @@ namespace VnExpress.Data.Migrations
                             Id = 2,
                             Author = "Tuấn Anh",
                             CategoryId = 2,
-                            DateCreated = new DateTime(2021, 6, 1, 0, 0, 0, 0, DateTimeKind.Local),
+                            CategoryName = "Xã hội",
+                            DateCreated = new DateTime(2021, 5, 27, 0, 0, 0, 0, DateTimeKind.Local),
                             Images = "Ảnh",
                             MainContent = "Tình hình xã hội EU",
                             ShortContent = "Tình hình xã hội châu á",
@@ -127,7 +135,8 @@ namespace VnExpress.Data.Migrations
                             Id = 3,
                             Author = "Văn Trung",
                             CategoryId = 3,
-                            DateCreated = new DateTime(2021, 6, 1, 0, 0, 0, 0, DateTimeKind.Local),
+                            CategoryName = "Kinh tế",
+                            DateCreated = new DateTime(2021, 5, 27, 0, 0, 0, 0, DateTimeKind.Local),
                             Images = "Ảnh",
                             MainContent = "Tình hình văn hóa EU",
                             ShortContent = "Tình hình văn hóa châu á",

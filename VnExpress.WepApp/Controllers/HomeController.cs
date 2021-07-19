@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using VnExpress.Application.Posts;
 using VnExpress.WepApp.Models;
 
 namespace VnExpress.WepApp.Controllers
@@ -12,15 +13,25 @@ namespace VnExpress.WepApp.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IPostService _postService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger,
+            IPostService postService)
         {
             _logger = logger;
+            _postService = postService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var viewModel = new HomeViewModel
+            {
+                FeaturedPosts = await _postService.GetFeaturedPosts(),
+                LatestPosts = await _postService.GetLatestPosts(),
+                NewPosts = await _postService.GetNewPosts()
+            };
+                
+            return View(viewModel);
         }
 
         public IActionResult Privacy()
